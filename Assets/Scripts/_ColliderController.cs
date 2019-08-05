@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class _ColliderController : MonoBehaviour {
 
@@ -19,19 +20,18 @@ public class _ColliderController : MonoBehaviour {
 
        //bulletPrefab = (GameObject)Resources.Load("Prefabs/PLAYER_BULLET");
         CreateCollider();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
         Debug.DrawLine(transform.position, Vector3.up * (outerRing.GetComponent<Renderer>().bounds.size.x)/2f, Color.cyan);
     }
 
-    Vector2[] CalcEdgeColliderPoints()
+    Vector2[] CalcEdgeColliderPoints(float scaleFactor)
     {
         int STEP = 10;
         int angle = 0;
         int angleEnd = 360;
-        float scaleFactor = 1.2f;
 
         Vector2[] colliderPoints = new Vector2[(angleEnd / STEP)+1];
 
@@ -51,6 +51,6 @@ public class _ColliderController : MonoBehaviour {
     void CreateCollider()
     {
         edgeCollider = outerRing.GetComponent<EdgeCollider2D>();
-        edgeCollider.points = CalcEdgeColliderPoints();
+        edgeCollider.points = CalcEdgeColliderPoints(1.2f).Concat(CalcEdgeColliderPoints(1.3f)).ToArray();
     }
 }
