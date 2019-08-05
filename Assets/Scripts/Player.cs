@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position ,transform.rotation);
+             Instantiate(bulletPrefab, transform.position ,transform.rotation);
         }
     }
 }
