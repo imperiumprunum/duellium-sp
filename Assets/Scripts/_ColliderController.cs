@@ -24,7 +24,7 @@ public class _ColliderController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.DrawLine(transform.position, Vector3.up * (outerRing.GetComponent<Renderer>().bounds.size.x)/2f, Color.cyan);
+        //Debug.DrawLine(transform.position, Vector3.up * (outerRing.GetComponent<Renderer>().bounds.size.x)/2f, Color.cyan);
     }
 
     Vector2[] CalcEdgeColliderPoints(float scaleFactor)
